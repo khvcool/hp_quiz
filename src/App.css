@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-hogwarts-gold: #f39c12;
+  --color-tg-bg: var(--tg-theme-bg-color, #1a1a1a);
+  --color-tg-text: var(--tg-theme-text-color, #ffffff);
+  --color-tg-button: var(--tg-theme-button-color, #2481cc);
+  --color-tg-button-text: var(--tg-theme-button-text-color, #ffffff);
+  --color-tg-hint: var(--tg-theme-hint-color, #999999);
+}
+
+body {
+  @apply bg-tg-bg text-tg-text;
+}
