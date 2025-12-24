@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg: var(--tg-theme-secondary-bg-color, #f4f4f7);
+  --card: var(--tg-theme-bg-color, #ffffff);
+  --text: var(--tg-theme-text-color, #222222);
+  --hint: var(--tg-theme-hint-color, #999999);
+  --primary: var(--tg-theme-button-color, #3390ec);
+  --primary-text: var(--tg-theme-button-text-color, #ffffff);
+  --border: rgba(0,0,0,0.06);
+}
+body { background: var(--bg); color: var(--text); font-family: -apple-system, system-ui, sans-serif; margin: 0; overflow-x: hidden; }
+.app-container { position: fixed; inset: 0; }
+.view { position: absolute; inset: 0; }
+.fade-in { animation: fIn 0.3s ease-out; }
+@keyframes fIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.main-title { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin: 0; }
+.subtitle { color: var(--hint); font-size: 15px; margin-top: 4px; }
+
+.menu-card { background: var(--card); border-radius: 24px; box-shadow: 0 4px 24px rgba(0,0,0,0.03); }
+.btn-primary { background: var(--primary); color: var(--primary-text); border: none; width: 100%; height: 56px; border-radius: 16px; font-weight: 700; font-size: 16px; flex-shrink: 0; }
+.btn-secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); height: 50px; border-radius: 16px; font-weight: 700; font-size: 14px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+
+.quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.quiz-info { display: flex; flex-direction: column; font-size: 11px; font-weight: 700; color: var(--hint); }
+.quiz-info strong { font-size: 18px; color: var(--text); }
+.btn-exit { color: #ff4d4d; background: none; border: none; font-weight: 700; font-size: 12px; }
+
+.progress-bar { height: 6px; background: var(--border); border-radius: 100px; margin-bottom: 24px; }
+.progress-fill { height: 100%; background: var(--primary); border-radius: 100px; transition: width 1s linear; }
+
+.question-box h2 { font-size: 22px; font-weight: 800; text-align: center; margin: 20px 0 30px; line-height: 1.3; }
+.option-btn { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 14px; display: flex; align-items: center; text-align: left; width: 100%; margin-bottom: 10px; }
+.option-letter { width: 28px; height: 28px; background: var(--bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; margin-right: 12px; color: var(--primary); }
+.option-text { font-weight: 600; font-size: 14px; flex: 1; }
+
+.result-card { background: var(--primary); color: var(--primary-text); border-radius: 24px; }
+.result-score { font-size: 64px; font-weight: 900; margin: 4px 0; }
+.answer-item { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; font-size: 13px; font-weight: 700; }
+.answer-item.correct { border-left: 4px solid #4caf50; }
+.answer-item.wrong { border-left: 4px solid #ff4d4d; }
+
+.view-title { font-size: 24px; font-weight: 800; margin-bottom: 20px; }
+.select-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px; display: flex; justify-content: space-between; align-items: center; width: 100%; border: 1px solid var(--border); }
+.select-card.active { border-color: var(--primary); background: rgba(51, 144, 236, 0.05); }
+.check-mark { background: var(--primary); color: var(--primary-text); width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+
+.tabs { display: flex; background: var(--border); padding: 3px; border-radius: 10px; }
+.tab-btn { flex: 1; padding: 7px; border-radius: 8px; border: none; background: none; color: var(--hint); font-weight: 700; font-size: 11px; }
+.tab-btn.active { background: var(--card); color: var(--text); }
+
+.lb-item { background: var(--card); padding: 10px 14px; border-radius: 12px; display: flex; align-items: center; gap: 10px; }
+.lb-rank { font-weight: 800; color: var(--primary); width: 20px; }
+.lb-name { font-weight: 600; font-size: 13px; }
+.lb-time { font-size: 10px; color: var(--hint); font-weight: 600; }
+.lb-points { font-weight: 800; font-size: 14px; }
+
+.empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; text-align: center; border: 1px dashed var(--border); border-radius: 20px; margin-top: 20px; }
+.empty-icon { font-size: 40px; margin-bottom: 12px; }
+.empty-state p { font-weight: 800; margin: 0; font-size: 16px; }
+.empty-state span { color: var(--hint); font-size: 13px; margin-top: 4px; }
+
+.admin-input { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px; color: var(--text); width: 100%; box-sizing: border-box; font-size: 14px; }
+.icon-btn { background: var(--bg); border: none; border-radius: 8px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.btn-chip { background: var(--border); border: none; border-radius: 8px; padding: 6px 12px; font-weight: 700; font-size: 10px; color: var(--text); }
+.btn-chip.active { background: #4caf50; color: white; }
+
+.loader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 30px; background: var(--bg); }
+.custom-scrollbar::-webkit-scrollbar { width: 0; }
+
+/* Встряска для кнопок */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+.vfx-shake { animation: shake 0.2s ease-in-out 0s 2; }
+
+/* Золотое свечение для Комбо */
+@keyframes gold-pulse {
+  0% { box-shadow: inset 0 0 0px #ffd700; }
+  50% { box-shadow: inset 0 0 40px #ffd700; background: rgba(255, 215, 0, 0.1); }
+  100% { box-shadow: inset 0 0 0px #ffd700; }
+}
+.vfx-combo { animation: gold-pulse 0.8s ease-in-out; }
+
+/* Эффект рассыпания (пепла) при проигрыше - исправленный */
+@keyframes ash-fade {
+  0% { 
+    filter: grayscale(0) contrast(1); 
+  }
+  100% { 
+    /* Делаем картинку черно-белой и чуть блеклой, но без блюра контента */
+    filter: grayscale(0.8) contrast(0.8) brightness(0.7);
+    background-color: #1a1a1a; /* Глубокий темный фон */
+  }
+}
+
+.vfx-ash { 
+  animation: ash-fade 2s forwards; 
+}
+
+/* Добавим свечение кнопке "Назад", чтобы она выделялась на фоне пепла */
+.vfx-ash .btn-primary {
+  box-shadow: 0 0 15px rgba(51, 144, 236, 0.5);
+  z-index: 10;
+}
+
+.vfx-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; /* Чтобы можно было кликать сквозь этот слой */
+  z-index: 1;
+  transition: all 1.5s ease;
+}
+
+.ash-active {
+  background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.8) 100%);
+  backdrop-filter: grayscale(1) sepia(0.5); /* Эффект старой пожелтевшей газеты/пепла */
+}
+
+/* Едва заметная подсветка рамки для админа */
+.admin-hint {
+  position: relative;
+}
+
+.combo-badge {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  background: linear-gradient(45deg, #ffd700, #ff8c00);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+  box-shadow: 0 4px 10px rgba(255, 140, 0, 0.4);
+  z-index: 10;
+  animation: bounce 0.5s ease infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
+.admin-correct {
+  border-color: rgba(255, 215, 0, 0.5) !important;
+  background: rgba(255, 215, 0, 0.05) !important;
+}
+
+
+
+.font-magic { font-family: 'Cinzel', serif; }
+.font-book { font-family: 'EB Garamond', serif; }
+
+/* Анимация шляпы */
+.hat-animation {
+  animation: float-hat 3s ease-in-out infinite;
+}
+
+@keyframes float-hat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+.fade-in { animation: fadeIn 0.8s ease forwards; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stars-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 80%);
+  z-index: -1;
+}
+
+/* --- Интеграция Магического Стиля (Исправления) --- */
+
+/* Фикс видимости кнопки в темной теме */
+.btn-gold-fix {
+  background: #d4af37 !important; /* Насыщенное золото */
+  color: #000000 !important;      /* Всегда черный текст для контраста */
+  border: none !important;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4) !important;
+  transition: all 0.3s ease;
+}
+
+.btn-gold-fix:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.6) !important;
+}
+
+/* Свечение карточки при распределении */
+.sorting-glow {
+  box-shadow: 0 0 40px var(--accent, #d4af37);
+  transition: box-shadow 1s ease;
+}
+
+/* Улучшенный фон со звездами */
+.stars-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  z-index: -1;
+}
+
+/* Адаптация основного текста под EB Garamond */
+.font-book {
+  font-family: 'EB Garamond', serif;
+  line-height: 1.4;
+}
+
+/* Плавный переход фона при смене факультета */
+.view {
+  transition: background-color 1.2s ease-in-out;
+}
+
+/* Leaderboard Tabs */
+.tab-btn {
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+  color: var(--tg-hint);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  border-bottom-color: #d4af37;
+  color: #d4af37;
+  font-weight: bold;
+}
+
+/* Кастомный скролл для списка */
+.leaderboard-list::-webkit-scrollbar {
+  width: 3px;
+}
+
+.leaderboard-list::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+}
+
+.magic-card-item {
+  background: var(--tg-secondary-bg);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  transition: transform 0.2s ease;
+}
+
+/* Gameplay Styles */
+.magic-card-quiz {
+  background: var(--tg-secondary-bg);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.btn-answer-magic {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  transition: all 0.2s ease;
+}
+
+.score-badge-magic {
+  background: linear-gradient(135deg, rgba(212,175,55,0.1), transparent);
+  border-left: 3px solid #d4af37;
+}
+
+.timer-line-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* Золотое свечение всего экрана */
+.view.combo-mode-active::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 100px rgba(212, 175, 55, 0.3);
+  pointer-events: none;
+  z-index: 50;
+  animation: gold-pulse 2s infinite alternate;
+}
+
+@keyframes gold-pulse {
+  from { opacity: 0.4; box-shadow: inset 0 0 60px rgba(212, 175, 55, 0.2); }
+  to { opacity: 1; box-shadow: inset 0 0 120px rgba(212, 175, 55, 0.5); }
+}
+
+/* Дополнительный эффект искр на фоне */
+.combo-sparks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, #d4af37 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.1;
+  animation: sparks-move 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sparks-move {
+  from { background-position: 0 0; }
+  to { background-position: 50px 100px; }
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  color: #d4af37;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* 1. Холст конфетти - самый нижний слой */
+canvas {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 2. Контейнеры приложения - убираем fixed/absolute конфликты */
+.app-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 10;
+  /* Убираем overflow: hidden из body, если он там есть, и разрешаем скролл тут */
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.view {
+  position: relative; /* Вместо absolute */
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 11;
+  pointer-events: auto !important; /* Явно разрешаем тачи */
+}
+
+/* 3. Кнопки и интерактив - самый верхний слой */
+.btn-answer-magic, 
+.option-btn, 
+.btn-primary, 
+.btn-secondary, 
+.tab-btn {
+  position: relative;
+  z-index: 30 !important;
+  pointer-events: auto !important;
+  touch-action: manipulation; /* Оптимизация для мобильных нажатий */
+}
+
+/* 4. Исправляем золотое свечение (оно перекрывало тач) */
+.view.combo-mode-active::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  /* Снижаем z-index, чтобы свечение было ПОД кнопками, но над фоном */
+  z-index: 5; 
+  box-shadow: inset 0 0 100px rgba(212, 175, 55, 0.3);
+  pointer-events: none !important; /* Критично важно */
+  animation: gold-pulse 2s infinite alternate;
+}
